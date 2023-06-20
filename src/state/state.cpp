@@ -20,8 +20,8 @@
 int State::evaluate(){
   int score = 0;
   //int pieceValues[7] = { 0, 100,500,  320, 330,900, 0};  // Piece values 
-  //int pieceValues[7] = { 0, 2,6,  7, 8,20, 1000};  // Piece values 
-  int pieceValues[7] = { 0, 4,70,  50, 30,350, 1000};
+  int pieceValues[7] = { 0, 2,6,  7, 8,20, 0};  // Piece values 
+   //int pieceValues[7] = { 0, 2,70,  50, 30,350, 1000};
   /*piece id :
   0=empty, 1=pawn, 2=rook, 3=knight, 4=bishop, 5=queen, 6=king
   Queen=20, Bishop=8, Knight=7, Rook=6, Pawn=2.
@@ -160,7 +160,7 @@ int total_pieces=0;
   // Calculate the score based on the pieces on the board
   for (int i = 0; i < BOARD_H; i++) {
     for (int j = 0; j < BOARD_W; j++) {
-      int piece = this->board.board[this->player][i][j];  // White pieces
+      int piece = this->board.board[0][i][j];  // our pieces
       //based on the material
       if (piece > 0) {
         score += pieceValues[piece];
@@ -239,7 +239,7 @@ int total_pieces=0;
 
 
 
-      piece = this->board.board[1-this->player][i][j];  // Black pieces
+      piece = this->board.board[1][i][j];  // other pieces
       //based on the material
       if (piece > 0) {
         score -= pieceValues[piece];
