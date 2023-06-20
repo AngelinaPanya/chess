@@ -7,9 +7,7 @@
 
 #include <fstream>
 //std::ofstream qout("Eval.txt", std::ios::app);
-
 //second commit
-//yey
 
 /**
  * @brief evaluate the state
@@ -18,15 +16,10 @@
  */
 int State::evaluate(){
   int score = 0;
-  //int pieceValues[7] = { 0, 100,500,  320, 330,900, 0};  // Piece values 
- // int pieceValues[7] = { 0, 2,6,  7, 8,20, 0};  // Piece values chooooose this
-  //int pieceValues[7] = { 0, 2,70,  50, 30,350, 1000};
   int pieceValues[7] = { 0, 1,20,  30, 40,100, 0};  // Piece values 
   /*piece id :
-  0=empty, 1=pawn, 2=rook, 3=knight, 4=bishop, 5=queen, 6=king
-  Queen=20, Bishop=8, Knight=7, Rook=6, Pawn=2.
+ 0=empty, 1=pawn, 2=rook, 3=knight, 4=bishop, 5=queen, 6=king
   */
-
 int total_pieces=0;
   // Calculate the score based on the pieces on the board
   for (int i = 0; i < BOARD_H; i++) {
@@ -46,15 +39,11 @@ int total_pieces=0;
         if (i+1<=5 && j-1>=0 && this->board.board[1][i+1][j-1]==1) score-=50;
         if (i+1<=5 &&j+1<=5 &&this->board.board[1][i+1][j+1]==1) score-=50;
       }
-
-
-
       }
       piece = this->board.board[1][i][j];  // other pieces
       //based on the material
       if (piece > 0) {
         score -= pieceValues[piece];
-        //total_pieces++;
 
         if (piece ==6){
         if (i-1>=0 && this->board.board[0][i-1][j]==1) score+=50;
@@ -66,8 +55,6 @@ int total_pieces=0;
         if (i+1<=5 && j-1>=0 && this->board.board[0][i+1][j-1]==1) score+=50;
         if (i+1<=5 &&j+1<=5 &&this->board.board[0][i+1][j+1]==1) score+=50;
       }
-
-        
       }
 
      }

@@ -17,7 +17,6 @@ static std::string x_axis = "ABCDE";
  */
 
 Move Random::get_move(State *state, int depth){
-
   if(!state->player){
   int best = INT_MIN;
   Move best_move(Point(-1,-1),Point(-1,-1));
@@ -31,7 +30,6 @@ Move Random::get_move(State *state, int depth){
   }
   return best_move;
   }
-
   else{
     int best_min=INT_MAX;
     Move best_move(Point(-1,-1),Point(-1,-1));
@@ -44,21 +42,14 @@ Move Random::get_move(State *state, int depth){
     }
   }
   return best_move;
-
-
-
-
   }
-
 }
 
 int Random :: minimax(State *state,int depth, bool Max_player,int alpha,int beta){
   int evall;
-  
   if(depth<=0 || state->game_state == WIN || state->game_state == DRAW){
     return state->evaluate();
   }
-
   if(Max_player){
     int Maxi=INT_MIN;
     for (auto child : state->legal_actions){
@@ -69,7 +60,6 @@ int Random :: minimax(State *state,int depth, bool Max_player,int alpha,int beta
     }
     return Maxi;
   }
-
   else {
     int MINI=INT_MAX;
     for (auto child : state->legal_actions){
@@ -80,6 +70,4 @@ int Random :: minimax(State *state,int depth, bool Max_player,int alpha,int beta
     }
     return MINI;
   }
-
-
 }
