@@ -17,22 +17,43 @@ static std::string x_axis = "ABCDE";
  */
 
 Move Random::get_move(State *state, int depth){
+
+  if(!state->player){
   int best = INT_MIN;
   Move best_move(Point(-1,-1),Point(-1,-1));
   for (auto temps : state->legal_actions){
-    int num = minimax(state->next_state(temps),3,true,INT_MIN,INT_MAX);
+    int num = minimax(state->next_state(temps),3,false,INT_MIN,INT_MAX);
     if(num > best){
       best = num;
       best_move = temps;
     }
   }
   return best_move;
+  }
+
+  else{
+    int best_min=INT_MAX;
+    Move best_move(Point(-1,-1),Point(-1,-1));
+    for (auto temps : state->legal_actions){
+    int num = minimax(state->next_state(temps),3,true,INT_MIN,INT_MAX);
+    if(num < best_min){
+      best_min = num;
+      best_move = temps;
+    }
+  }
+  return best_move;
+
+
+
+
+  }
+
 }
 
 int Random :: minimax(State *state,int depth, bool Max_player,int alpha,int beta){
   int evall;
   
-  if(depth<=0 || state->game_state == WIN ){
+  if(depth<=0 || state->game_state == WIN || state->game_state == DRAW){
     return state->evaluate();
   }
 

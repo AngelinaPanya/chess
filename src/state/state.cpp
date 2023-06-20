@@ -17,8 +17,8 @@
 int State::evaluate(){
   int score = 0;
   //int pieceValues[7] = { 0, 100,500,  320, 330,900, 0};  // Piece values 
-  //int pieceValues[7] = { 0, 2,6,  7, 8,20, 1000};  // Piece values 
-  int pieceValues[7] = { 0, -2,70,  10, 30,100, 0};
+  int pieceValues[7] = { 0, 2,6,  7, 8,20, 1000};  // Piece values 
+  //int pieceValues[7] = { 0, 4,70,  50, 30,350, 1000};
   /*piece id :
   0=empty, 1=pawn, 2=rook, 3=knight, 4=bishop, 5=queen, 6=king
   Queen=20, Bishop=8, Knight=7, Rook=6, Pawn=2.
@@ -164,27 +164,51 @@ int total_pieces=0;
         //total_pieces++;
       }
 
-      if (piece ==6){
-        if (i-1>=0 && this->board.board[1-this->player][i-1][j]) score-=50;
-        if (i+1<=5 && this->board.board[1-this->player][i+1][j]) score-=50;
-        if (j-1>=0 && this->board.board[1-this->player][i][j-1]) score-=50;
-        if (j+1<=5 &&this->board.board[1-this->player][i][j+1]) score-=50;
-        if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]) score-=50;
-        if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]) score-=50;
-        if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]) score-=50;
-        if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]) score-=50;
-      }
+      // if (piece ==6){
+      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=50;
+      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=50;
+      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=50;
+      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=50;
+      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=50;
+      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=50;
+      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=50;
+      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=50;
+      //   //if (i==5 && j==4) score+=2;
+      // }
+      // if (piece ==5){
+      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=50;
+      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=50;
+      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=50;
+      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=50;
+      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=50;
+      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=50;
+      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=50;
+      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=50;
+      // }
 
-      if (piece ==5){
-        if (i-1>=0 && this->board.board[1-this->player][i-1][j]) score-=50;
-        if (i+1<=5 && this->board.board[1-this->player][i+1][j]) score-=50;
-        if (j-1>=0 && this->board.board[1-this->player][i][j-1]) score-=50;
-        if (j+1<=5 &&this->board.board[1-this->player][i][j+1]) score-=50;
-        if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]) score-=50;
-        if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]) score-=50;
-        if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]) score-=50;
-        if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]) score-=50;
-      }
+      // if (piece ==4||piece ==3||piece==2){
+      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=20;
+      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=20;
+      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=20;
+      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=20;
+      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=20;
+      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=20;
+      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=20;
+      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=20;
+      // }
+
+      // if (piece ==1){
+      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=5;
+      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=5;
+      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=5;
+      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=5;
+      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=5;
+      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=5;
+      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=5;
+      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=5;
+      // }
+
+       
 
       // if (piece == 1) { // Pawn
       //     score += pawnSquareTable[i][j];
@@ -242,6 +266,256 @@ int total_pieces=0;
       // if (piece == 6) { // king
       //     score -= BkingSquareTableMid[i][j];
       // }
+
+      // if (piece == 2) { // rook
+      // int x=j;
+      // int y=i;
+      // while(x<=5){
+      //   x+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(x>=0){
+      //   x-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(y>=0){
+      //   y-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(y<=6){
+      //   y+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // }
+
+
+      // if (piece == 5) { // queen
+      // int x=j;
+      // int y=i;
+      // while(x<=5 && y<=6){ //down right diagonal
+      //   x+=1;
+      //   y+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+      // x=j;
+      // y=i;
+
+      // while(x>=0 && y>=0){ //up-left diagonal
+      //   x-=1;
+      //   y-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(x<=5 && y>=0){ //up-right diagonal
+      //   x+=1;
+      //   y-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(x>=0 && y<=6){ //down-left diagonal
+      //   x-=1;
+      //   y+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+
+      // x=j;
+      // y=i;
+      // while(x<=5){
+      //   x+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(x>=0){
+      //   x-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(y>=0){
+      //   y-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(y<=6){
+      //   y+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+      // }
+
+
+
+
+
+      // if (piece==4){ //bishop
+      // int x=j;
+      // int y=i;
+      // while(x<=5 && y<=6){ //down right diagonal
+      //   x+=1;
+      //   y+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+      // x=j;
+      // y=i;
+
+      // while(x>=0 && y>=0){ //up-left diagonal
+      //   x-=1;
+      //   y-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(x<=5 && y>=0){ //up-right diagonal
+      //   x+=1;
+      //   y-=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+      // x=j;
+      // y=i;
+      // while(x>=0 && y<=6){ //down-left diagonal
+      //   x-=1;
+      //   y+=1;
+      //   if(this->board.board[1-this->player][y][x]>0){
+      //     break;
+      //   }
+      //   if(this->board.board[this->player][y][x]>0){
+      //     int barang=this->board.board[this->player][y][x];
+      //     score-=pieceValues[barang];
+      //     break;
+      //   }
+      // }
+
+
+
+
+      // }
+
      }
    }
   //`qout<<"score= "<<score<<" lala"<<std::endl;
