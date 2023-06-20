@@ -8,6 +8,8 @@
 #include <fstream>
 //std::ofstream qout("Eval.txt", std::ios::app);
 
+//second commit
+
 
 /**
  * @brief evaluate the state
@@ -17,8 +19,8 @@
 int State::evaluate(){
   int score = 0;
   //int pieceValues[7] = { 0, 100,500,  320, 330,900, 0};  // Piece values 
-  int pieceValues[7] = { 0, 2,6,  7, 8,20, 1000};  // Piece values 
-  //int pieceValues[7] = { 0, 4,70,  50, 30,350, 1000};
+  //int pieceValues[7] = { 0, 2,6,  7, 8,20, 1000};  // Piece values 
+  int pieceValues[7] = { 0, 4,70,  50, 30,350, 1000};
   /*piece id :
   0=empty, 1=pawn, 2=rook, 3=knight, 4=bishop, 5=queen, 6=king
   Queen=20, Bishop=8, Knight=7, Rook=6, Pawn=2.
