@@ -80,7 +80,7 @@ int State::evaluate(){
     {20, 30,10, 30, 20}
   };
 
-  int kingSquareTableEnd[6][5] = { //white
+  int kingSquareTableEnd[6][5] = { //whiteasdjfjs
     {-50, -30, -30, -30, -50},
     {-30, -10, 0, -10, -30},
     {-30, 10, 30, 10, -30},
