@@ -11,7 +11,6 @@
 //second commit
 //yey
 
-
 /**
  * @brief evaluate the state
  * 
@@ -20,141 +19,13 @@
 int State::evaluate(){
   int score = 0;
   //int pieceValues[7] = { 0, 100,500,  320, 330,900, 0};  // Piece values 
-  int pieceValues[7] = { 0, 2,6,  7, 8,20, 0};  // Piece values 
-   //int pieceValues[7] = { 0, 2,70,  50, 30,350, 1000};
+ // int pieceValues[7] = { 0, 2,6,  7, 8,20, 0};  // Piece values chooooose this
+  //int pieceValues[7] = { 0, 2,70,  50, 30,350, 1000};
+  int pieceValues[7] = { 0, 1,20,  30, 40,100, 0};  // Piece values 
   /*piece id :
   0=empty, 1=pawn, 2=rook, 3=knight, 4=bishop, 5=queen, 6=king
   Queen=20, Bishop=8, Knight=7, Rook=6, Pawn=2.
   */
-  int pawnSquareTable[6][5] = { //white
-    { 0,  0,  0,  0,  0},
-    {70, 70, 70, 70, 70},
-    {10, 40, 40, 40, 10},
-    {20, 25, 25, 25, 0},
-    {-10, -20, 15, -20,5},
-    { 0,  0,  0,  0,  0}
-  };
-
-  int rookSquareTable[6][5] = { //white
-    {0, 0, 0, 0, 0},
-    {10, 10, 10, 10, 5},
-    {-5, 0, 0, 0, -5},
-    {-5, 0, 0, 0, -5},
-    {-5, 0, 0, 0,-5},
-    {0, 0, 5, 0, 0}
-  };
-
-  int knightSquareTable[6][5] = { //white
-    {-50, -40, -30, -40, -50},
-    {-40, 0, 15, 0, -40},
-    {-30, 15, 20, 10, -30},
-    {-30, 10,20, 10, -30},
-    {-40, -10, 5, -10,-40},
-    {-50, -40, -30, -40, -50}
-  };
-
-  int bishopSquareTable[6][5] = { //white
-    {-20, -10, -10, -10, -20},
-    {-10, 0, 0, 0, -10},
-    {-10, 10, 0, 10, -10},
-    {-10, 0,10, 0, -10},
-    {-10, 5, 0, 5,-10},
-    {-20, -10, -10, -10, -20}
-  };
-
-  int queenSquareTable[6][5] = { //white
-    {-20, -10, -5, -10, -20},
-    {-10, 0, 0, -30, -10},
-    {-5, 0, 5, 5, -5},
-    {-5, 0,5, 10, -5},
-    {-10, 0, 0, 5,-10},
-    {-20, -10, -5, -10, -20}
-  };
-
-  int kingSquareTableMid[6][5] = { //white
-    {-30, -40, -50, -40, -30},
-    {-30, -40, -50, -40, -30},
-    {-20, -30, -40, -30, -20},
-    {-10, -20,-20, -20, -10},
-    {20, 0, 0, 0,20},
-    {20, 30,10, 30, 20}
-  };
-
-  int kingSquareTableEnd[6][5] = { //whiteasdjfjskjdbfakjfhj
-    {-50, -30, -30, -30, -50},
-    {-30, -10, 0, -10, -30},
-    {-30, 10, 30, 10, -30},
-    {-30, 20,40, 20, -30},
-    {-30, 0, 0, 0,-30},
-    {-50, -30,-30, -30, -50}
-  };
-
-
-//////////////////////////////////////////BLACKkkweurh
-  int BpawnSquareTable[6][5] = { //black
-    { 0,  0,  0,  0,  0},
-    {5, -20, 5, -20, -10},
-    {0, 25, 25, 25, 20},
-    {10, 40, 40,40, 10},
-    {70, 70, 70, 70,70},
-    { 0,  0,  0,  0,  0}
-  };
-
-  int BrookSquareTable[6][5] = { //black
-    {0, 0, 5, 0, 0},
-    {-5, 0, 0, 0, -5},
-    {-5, 0, 0, 0, -5},
-    {-5, 0, 0, 0, -5},
-    {5, 10, 10, 10, 10},
-    {0, 0, 0, 0, 0}
-  };
-
-  int BknightSquareTable[6][5] = { //black
-    {-50, -40, -30, -40, -50},//
-    {-40, -10, 5, -10, -40}, //
-    {-30, 10, 20, 10, -30}, //
-    {-30, 10,20, 15, -30},
-    {-40, 0, 15, 0,-40},//
-    {-50, -40, -30, -40, -50}//
-  };
-
-  int BbishopSquareTable[6][5] = { //black
-    {-20, -10, -10, -10, -20},//
-    {-10, 5, 0, 5, -10},//
-    {-10, 0, 10, 0, -10},//
-    {-10, 10,0, 10, -10},//
-    {-10, 0, 0, 0,-10},//
-    {-20, -10, -10, -10, -20}//
-  };
-
-  int BqueenSquareTable[6][5] = { //white
-    {-20, -10, -5, -10, -20},//
-    {-10, 5, 0, 0, -10},
-    {-5, 10, 5, 0, -5},
-    {-5, 5,5, 0, -5},
-    {-10, 0, 0, 0,-10},
-    {-20, -10, -5, -10, -20}//
-  };
-
-  int BkingSquareTableMid[6][5] = { //black
-    {20, 30, 10, 30, 20},//
-    {20, 0, 0, 0, 20},//
-    {-10, -20, -20, -20, -10},
-    {-20, -30,-40, -30, -20},
-    {-30, -40, -50, -40,-30},
-    {-30, -40,-50, -40, -30}
-  };
-
-  int BkingSquareTableEnd[6][5] = { //black
-    {-50, -30, -30, -30, -50},
-    {-30, 0, 0, 0, -30},
-    {-30, 20, 40, 20, -30},
-    {-30, 10,30, 10, -30},
-    {-30, -10, 0, -10,-30},
-    {-50, -30,-30, -30, -50}
-  };
-  
-
 
 int total_pieces=0;
   // Calculate the score based on the pieces on the board
@@ -165,383 +36,42 @@ int total_pieces=0;
       if (piece > 0) {
         score += pieceValues[piece];
         //total_pieces++;
+        if (piece ==6){
+        if (i-1>=0 && this->board.board[1][i-1][j]==1) score-=50;
+        if (i+1<=5 && this->board.board[1][i+1][j]==1) score-=50;
+        if (j-1>=0 && this->board.board[1][i][j-1]==1) score-=50;
+        if (j+1<=5 &&this->board.board[1][i][j+1]==1) score-=50;
+        if (i-1>=0 && j-1>=0 &&this->board.board[1][i-1][j-1]==1) score-=50;
+        if (i-1>=0 && j+1<=5 &&this->board.board[1][i-1][j+1]==1) score-=50;
+        if (i+1<=5 && j-1>=0 && this->board.board[1][i+1][j-1]==1) score-=50;
+        if (i+1<=5 &&j+1<=5 &&this->board.board[1][i+1][j+1]==1) score-=50;
       }
 
-      // if (piece ==6){
-      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=50;
-      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=50;
-      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=50;
-      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=50;
-      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=50;
-      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=50;
-      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=50;
-      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=50;
-      //   //if (i==5 && j==4) score+=2;
-      // }
-      // if (piece ==5){
-      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=50;
-      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=50;
-      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=50;
-      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=50;
-      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=50;
-      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=50;
-      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=50;
-      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=50;
-      // }
-
-      // if (piece ==4||piece ==3||piece==2){
-      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=20;
-      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=20;
-      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=20;
-      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=20;
-      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=20;
-      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=20;
-      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=20;
-      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=20;
-      // }
-
-      // if (piece ==1){
-      //   if (i-1>=0 && this->board.board[1-this->player][i-1][j]==1) score-=5;
-      //   if (i+1<=5 && this->board.board[1-this->player][i+1][j]==1) score-=5;
-      //   if (j-1>=0 && this->board.board[1-this->player][i][j-1]==1) score-=5;
-      //   if (j+1<=5 &&this->board.board[1-this->player][i][j+1]==1) score-=5;
-      //   if (i-1>=0 && j-1>=0 &&this->board.board[1-this->player][i-1][j-1]==1) score-=5;
-      //   if (i-1>=0 && j+1<=5 &&this->board.board[1-this->player][i-1][j+1]==1) score-=5;
-      //   if (i+1<=5 && j-1>=0 && this->board.board[1-this->player][i+1][j-1]==1) score-=5;
-      //   if (i+1<=5 &&j+1<=5 &&this->board.board[1-this->player][i+1][j+1]==1) score-=5;
-      // }
-
-       
-
-      // if (piece == 1) { // Pawn
-      //     score += pawnSquareTable[i][j];
-      // }
-
-      // if (piece == 2) { // rook
-      //     score += rookSquareTable[i][j];
-      // }
-
-      // if (piece == 3) { // knight
-      //     score += knightSquareTable[i][j];
-      // }
-
-      // if (piece == 4) { // bishop
-      //     score += bishopSquareTable[i][j];
-      // }
-
-      // if (piece == 5) { // queen
-      //     score += queenSquareTable[i][j];
-      // }
-
-      // if (piece == 6) { // king
-      //     score += kingSquareTableMid[i][j];
-      // }
 
 
-
+      }
       piece = this->board.board[1][i][j];  // other pieces
       //based on the material
       if (piece > 0) {
         score -= pieceValues[piece];
         //total_pieces++;
+
+        if (piece ==6){
+        if (i-1>=0 && this->board.board[0][i-1][j]==1) score+=50;
+        if (i+1<=5 && this->board.board[0][i+1][j]==1) score+=50;
+        if (j-1>=0 && this->board.board[0][i][j-1]==1) score+=50;
+        if (j+1<=5 &&this->board.board[0][i][j+1]==1) score+=50;
+        if (i-1>=0 && j-1>=0 &&this->board.board[0][i-1][j-1]==1) score+=50;
+        if (i-1>=0 && j+1<=5 &&this->board.board[0][i-1][j+1]==1) score+=50;
+        if (i+1<=5 && j-1>=0 && this->board.board[0][i+1][j-1]==1) score+=50;
+        if (i+1<=5 &&j+1<=5 &&this->board.board[0][i+1][j+1]==1) score+=50;
       }
 
-      // if (piece == 1) { // Pawn
-      //     score -= BpawnSquareTable[i][j];
-      // }
-
-      // if (piece == 2) { // rook
-      //     score -= BrookSquareTable[i][j];
-      // }
-
-      // if (piece == 3) { // knight
-      //     score -= BknightSquareTable[i][j];
-      // }
-
-      // if (piece == 4) { // bishop
-      //     score -= BbishopSquareTable[i][j];
-      // }
-
-      // if (piece == 5) { // queen
-      //     score -= BqueenSquareTable[i][j];
-      // }
-
-      // if (piece == 6) { // king
-      //     score -= BkingSquareTableMid[i][j];
-      // }
-
-      // if (piece == 2) { // rook
-      // int x=j;
-      // int y=i;
-      // while(x<=5){
-      //   x+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(x>=0){
-      //   x-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(y>=0){
-      //   y-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(y<=6){
-      //   y+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // }
-
-
-      // if (piece == 5) { // queen
-      // int x=j;
-      // int y=i;
-      // while(x<=5 && y<=6){ //down right diagonal
-      //   x+=1;
-      //   y+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-      // x=j;
-      // y=i;
-
-      // while(x>=0 && y>=0){ //up-left diagonal
-      //   x-=1;
-      //   y-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(x<=5 && y>=0){ //up-right diagonal
-      //   x+=1;
-      //   y-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(x>=0 && y<=6){ //down-left diagonal
-      //   x-=1;
-      //   y+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-
-      // x=j;
-      // y=i;
-      // while(x<=5){
-      //   x+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(x>=0){
-      //   x-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(y>=0){
-      //   y-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(y<=6){
-      //   y+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-      // }
-
-
-
-
-
-      // if (piece==4){ //bishop
-      // int x=j;
-      // int y=i;
-      // while(x<=5 && y<=6){ //down right diagonal
-      //   x+=1;
-      //   y+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-      // x=j;
-      // y=i;
-
-      // while(x>=0 && y>=0){ //up-left diagonal
-      //   x-=1;
-      //   y-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(x<=5 && y>=0){ //up-right diagonal
-      //   x+=1;
-      //   y-=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-      // x=j;
-      // y=i;
-      // while(x>=0 && y<=6){ //down-left diagonal
-      //   x-=1;
-      //   y+=1;
-      //   if(this->board.board[1-this->player][y][x]>0){
-      //     break;
-      //   }
-      //   if(this->board.board[this->player][y][x]>0){
-      //     int barang=this->board.board[this->player][y][x];
-      //     score-=pieceValues[barang];
-      //     break;
-      //   }
-      // }
-
-
-
-
-      // }
+        
+      }
 
      }
    }
-  //`qout<<"score= "<<score<<" lala"<<std::endl;
-
-  // if (total_pieces<=9){
-  // for (int i = 0; i < BOARD_H; i++) {
-  //   for (int j = 0; j < BOARD_W; j++) {
-  //     int piece = this->board.board[0][i][j];  // White pieces
-  //     //based on the material
-  //     if (piece == 6) { // king
-  //         score -= kingSquareTableMid[i][j];
-  //         score +=kingSquareTableEnd[i][j];
-  //     }
-
-  //     piece = this->board.board[1][i][j];  // Black pieces
-  //     if (piece == 6) { // king
-  //         score += BkingSquareTableMid[i][j];
-  //         score-=BkingSquareTableEnd[i][j];
-        
-  //     }
-  // }
-  // }
-  // }
 
   return score;
 }
