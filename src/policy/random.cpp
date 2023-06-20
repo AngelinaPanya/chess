@@ -23,7 +23,7 @@ Move Random::get_move(State *state, int depth){
   Move best_move(Point(-1,-1),Point(-1,-1));
   state->get_legal_actions();
   for (auto temps : state->legal_actions){
-    int num = minimax(state->next_state(temps),4,false,INT_MIN,INT_MAX);
+    int num = minimax(state->next_state(temps),2,false,INT_MIN,INT_MAX);
     if(num > best){
       best = num;
       best_move = temps;
@@ -37,7 +37,7 @@ Move Random::get_move(State *state, int depth){
     Move best_move(Point(-1,-1),Point(-1,-1));
     state->get_legal_actions();
     for (auto temps : state->legal_actions){
-    int num = minimax(state->next_state(temps),4,true,INT_MIN,INT_MAX);
+    int num = minimax(state->next_state(temps),2,true,INT_MIN,INT_MAX);
     if(num < best_min){
       best_min = num;
       best_move = temps;
